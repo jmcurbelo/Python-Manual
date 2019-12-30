@@ -33,3 +33,27 @@ help(s.replace)
 # and replacement, but because
 # we can use patterns to specify substrings, we can be much more general:
 
+############
+# Texto Raw
+############
+
+# Si queremos que Python interprete el texto en bruto (raw) debemos anteponer una r
+
+path = r'E:\SALVAS' # Si imprimes la variable o muestra con doble \\ pero si lo imprimes
+# con un print muestra un solo \
+
+# Nota: Incluso un string raw no puede acabar en backslash
+
+#################################
+# Triple comillas (block string)
+#################################
+
+texto = '''Hoy en día es muy difícil
+hacer algo con los trabajos.
+El punto es que, no hay trabajo
+'''
+# Se interpretan los saltos de línea con \n
+
+texto #interprta los saltos con \n
+print(texto)  # lo imprime tal cual lo tecleamos
+
