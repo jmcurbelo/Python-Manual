@@ -3,6 +3,8 @@ l = ['spam',1.23, 'NI']
 
 l.append('aa')
 
+l.extend([2,6,89])
+
 # Borrar un elemento
 
 l.pop(2)
@@ -15,8 +17,38 @@ l.sort()
 
 l.reverse()
 
-# Nesting
+L = ['abc','ABD','aBe']
+L.sort()                          # Ordena por la mayuscaula primero
 
+L = ['abc','ABD','aBe']
+L.sort(key=str.lower)              # ordena por la miniscula primero
+
+L.sort(key=str.lower, reverse=True)
+
+L = ['eggs','spam','ham']
+
+L.index('eggs')                   # Da el indice dende esta el elemento
+
+L.insert(1, 'uva')                   # Inserta en la posicion sin borrar el existente, hace un desplazamient
+
+L.remove('uva')            # Borrar por valor
+
+L.pop(1)                  # Borrar por posicion
+
+L = ['hola','mundo','python','pelota']
+
+del L[0]                  # Borrar la primera posicion
+
+del L[1:]               # Borrar tdo a partir de la posicion seleccionada
+
+L = ['hola','mundo','python','pelota']
+
+L[0:3] = []        # Borra tambien porque primero borra la seleccion y luego asigna una lista vacía
+
+
+
+
+# Nesting
 m = [[1,2,3],
      [4,5,6],
      [7,8,9]]
@@ -54,3 +86,13 @@ list(map(sum,m))  # Map sum over items in M
 {ord(x) for x in 'spaam'}  # Sets remove duplicates
 
 {a : ord(a) for a in 'spaam'}
+
+3 in [1,2,3,4] # inclusion
+
+for x in [1,2,3]:             # Iteración
+     print(x, end=' ')
+
+
+# Map function
+list(map(abs, [-1,-2,0,1,2,3]))
+
