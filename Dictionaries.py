@@ -2,9 +2,46 @@
 import sys
 sys.modules[__name__].__dict__.clear()
 
+# Formas de crear un diccionario
+#1
+{1:'1',2:'yyyy'}
+
+#2
+D = {}
+D['llave1'] = 23
+
+#3
+dict(name='Jose', age= 28)  # Requiere que todas las lllaves sean strings
+
+#4
+dict([('naAME','jose'),('last name','moya')])
+
+#5 Creando un diccionario con diferentes llaves pero mismos valores
+dict.fromkeys(['a','b'], 0)  # llaves a, b valor cero
+
+
 D = {'food': 'Spam', 'quantity': 4, 'color': 'pink'}
 
-D['food']
+D['food']        # Agregar un valor
+
+D['color'] = 'ROSA'
+
+del D['color']    # borrar por llave
+
+list(D.values())   # Devulve los valores de las llaves
+
+list(D.items())    # Devuelve las llaves:valor
+
+# verificar que existe no una llave para asi agregarla
+D.get('color'), D.get('colores')    # devulve None si la llave no existe
+
+D1 = {'1':'rosa', '2':'verde', '3':'azul'}
+D2 = {'5':'negro', '6':'violeta'}
+
+D1.update(D2)   # Merge(une) el diccionario dos al diccionario 1
+
+D1.pop('3')  # Borra por valor de la llave
+
 
 D['quantity'] += 1  # Add 1 to 'quantity' value
 
@@ -49,6 +86,55 @@ D = {'a':1, 'c':3, 'b':2}
 for key in sorted(D):
        print(key,'=>',D[key])
 
+
+# Recorriendo un diccionario con un for loop
+
+table = {'Python': 'Guido van Rossum',
+         'Perl': 'Larry Wall',
+         'Tcl': 'John Ousterhout'}
+
+for lang in table:
+       print(lang, '\t', table[lang])
+
+D = {1:'rosa',
+     2:'verde',
+     3:'azul',
+     4:'marron',
+     5:'violeta'}
+
+for key in D:
+       print(key, '\t', D[key])
+
+# Los diccionarios admiten como llaves culquier objeto inmutable. Ej enteros, string y
+# hasta tuplas
+# Ejemplo de matriz multidimensional
+
+Matriz = {}
+Matriz[(2,3,4)] = 88
+Matriz[(7,8,9)] = 99
+
+Matriz[(2,3,7)]  # error de llave perdida, no existe
+
+# Para matrices multidimesionales sparse (sparciadas) podemos utilizar las isguientes
+# sentencias para evitar el error de lave perdida
+
+if (2,3,7) in Matriz:
+       print(Matriz[(2,3,7)])
+else:
+       print(0)
+
+# Otra forma
+try:
+       print(Matriz[(2,3,7)])
+except KeyError:
+       print(0)
+
+# otra forma más (la más concisa en términos de requerimiento de código)
+Matriz.get((2,3,4), 0)   # Obten en valor de la llave (2,3,4) sino devuelve cero
+Matriz.get((2,3,6), 0)
+
+
+
 ###########################################
 # Iteration and Optimization
 ###########################################
@@ -71,3 +157,22 @@ value = D.get('x',0) # el valor del key 'x' sino devuelve cero
 
 # Otra forma
 value = D['x'] if 'x' in D else 0
+
+#########################################################################
+# Dictionary comprehensions
+#########################################################################
+list(zip(['a', 'b', 'c'], [1, 2, 3])) # Zip together keys and values
+
+D = dict(zip(['a', 'b', 'c'], [1, 2, 3])) # Make a dict from zip result
+
+D = {k: v for (k, v) in zip(['a', 'b', 'c'], [1, 2, 3])}
+
+# Parecido a inizializar el diccionario con un mismo valor dict.fromkeys()
+
+D = {k : 0 for k in ['a','b','c','d']}
+
+# otra forma de inicializarlo con valores None
+ D = dict.fromkeys('spam') # llaves s,p,a,m valores None
+
+# Similar
+ D = {k : None for k in 'spam'}
