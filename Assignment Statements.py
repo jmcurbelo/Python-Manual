@@ -50,4 +50,21 @@ while L:
 L = [1,2,3]
 a, b, c, *d = L
 
+##############################################
+# augmented assignment (asignación aumentada)
+##############################################
+x = 1
+
+x = x +1 # más lento
+
+x += 1  # augmented assignmaent (más rapido)
+
+
+L = [1,2,3,4]
+
+L = L + [5,6] # asignacion mas lento concatenacion (devuelve una nueva lista)
+
+L += [8,9]  # más rapido concatenacion (similar a L.extend([8,9])) (hace cambion in-place)
+
+
 
