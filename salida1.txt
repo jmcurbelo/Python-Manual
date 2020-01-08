@@ -1,0 +1,2 @@
+así se redirecciona una salida en Python a un fichero
+así agremos más texto
