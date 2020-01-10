@@ -176,3 +176,33 @@ D = {k : 0 for k in ['a','b','c','d']}
 
 # Similar
  D = {k : None for k in 'spam'}
+
+
+# creando diccionarios con la funcion zip y for loops
+
+keys = ['a','b','c','d']
+values = [1,2,3,4]
+
+D ={}                                # Creando un diccionario vacío
+for (k,v) in zip(keys, values):
+    D[k] = v
+
+# omitiendo el for loop se puede hacer con:
+
+D1 = dict(zip(keys,values))
+
+# Si queremos iterar sobre un objeto pero a la vez guardar un índice entero podríamos hacer los siguiente
+
+c = 0
+for item in 'spam':
+    print(item, 'es la pos', c)
+    c += 1
+
+# En Python 3.0 podemos hacer lo siguiente
+
+S = 'spam'
+
+for (c, item) in enumerate(S):
+    print(item, 'es la pos', c)
+
+# Nota: enumerate() devuelve un tupla (index, value)  por eso se puede utilizar aquí

@@ -159,3 +159,18 @@ for item in L:  # Aquí los elementos de la lista no cambian e item guarda 6 al 
 for i in range(len(L)): # esta alternativa si agrega 1 a cada elemento de la lista
     L[i] += 1
 
+######################
+# The Zip function
+######################
+
+L1 = [1,2,3,4]
+L2 = [5,6,7,8]
+
+zip(L1, L2)  # devuelve una tupla con los elementos pareados
+list(zip(L1, L2))  # Para verlos como una lista [(1, 5), (2, 6), (3, 7), (4, 8)]
+
+# Utilizando zip en for loops
+
+for (x,y) in zip(L1, L2):
+    print(x, y, '--', x+y)
+
