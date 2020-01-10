@@ -1,3 +1,6 @@
+import sys
+sys.modules[__name__].__dict__.clear()
+
 # Agregar un elemento
 l = ['spam',1.23, 'NI']
 
@@ -64,6 +67,21 @@ col2 = [row[1] for row in m]
 diag = [m[i][i] for i in [0,1,2]]  # Collect a diagonal from matrix
 
 doubles = [c*2 for c in 'spam']  # Repeat characters in a string
+
+# Supongamos que queremos leer un archivo de texto y luego ponerlo en una lista donde
+# cada posicion es una linea de texto, lo podemos hacer como sigue
+
+lines = [line.rstrip() for line in open('file.txt')] #rstrip() elimina los espacios en blanco al final de la linea
+lines = [line.rstrip().upper() for line in open('text.txt')]
+
+# Filtrando con list comprehesion
+#Siguiendo el ejemplo anterior imaginemos que queremos solo las líneas que comiencen con p
+
+line = [line.rstrip() for line in open('text.txt') if line[0] == 'p']
+
+# Otro ejemplo de list comprehesion con dos for loop
+
+[x + y for x in 'abc' for y in 'lmn']
 
 # comprehension syntax in
 # parentheses can also be used to create generators that produce results on demand (the
