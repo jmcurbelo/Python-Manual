@@ -68,3 +68,7 @@ L += [8,9]  # más rapido concatenacion (similar a L.extend([8,9])) (hace cambio
 
 
 
+
+
+
+
