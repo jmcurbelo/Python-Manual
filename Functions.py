@@ -227,3 +227,66 @@ kwonly(1, c = 'el mas lindo') #funciona c fue referenciado
 Los argumentos keywords only simpre deben ser pasados despues de *argumento pero no despúes
 de **argumento, esto sería un error
 """
+
+# Ejmeplo de funcion minmax
+
+def minmax(test, *args):
+    res = args[0]
+    for arg in args[1:]:
+        if test(arg, res):
+            res = arg
+    return res
+
+def lessthan(x,y): return x<y
+def greatherthan(x,y): return x>y
+
+print(minmax(lessthan, 7,8,3,44,21,1,34))
+
+# Ejemplo: Interseccion de los elementos de un numero desconocido de elementos
+
+def interseccion(*args):
+    res = []
+    for x in args[0]:
+        for arg in args[1:]:
+            if x not in arg:
+                break
+        else:
+                res.append(x)
+    return res
+
+print(interseccion('jose','sabino','idalmis'))
+
+"""
+Ejemplo para emular la función print() de Python 3.0 mediante una función
+"""
+import sys
+
+def print30(*args, **kargs):
+    sep = kargs.get('sep', ' ')  # Keyword arg defaults
+    end = kargs.get('end', '\n')
+    file = kargs.get('file', sys.stdout)
+    output = ''
+    first = True
+    for arg in args:
+        output += ('' if first else sep) + str(arg)
+        first = False
+    file.write(output + end)
+
+print30(1,2,4)
+print30('jose','the','best', sep='-->')
+
+"""
+En Python 3.X podríamos reescribir esta función emplendo la característica key/value only
+"""
+
+def print30(*args, sep=' ', end='\n', file=sys.stdout):
+    output = ''
+    first = True
+    for arg in args:
+        output += ('' if first else sep) + str(arg)
+        first = False
+    file.write(output + end)
+
+############################################################################
+# Advanced Functions Topic
+############################################################################
