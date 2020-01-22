@@ -290,3 +290,104 @@ def print30(*args, sep=' ', end='\n', file=sys.stdout):
 ############################################################################
 # Advanced Functions Topic
 ############################################################################
+ # Recursion
+
+def mysum(L):
+    print(L)
+    if not L:
+        return 0
+    else:
+        return L[0] + mysum(L[1:])
+
+mysum([3,3,8,6])
+
+# Otras alternativas
+def mysum(L):                                    # Use ternary expression
+    return 0 if not L else L[0] + mysum(L[1:])
+
+def mysum(L):                                    # Any type, assume one
+    return L[0] if len(L) == 1 else L[0] + L[1:]
+
+def mysum(L):
+    first, *rest = L
+    return first if not rest else first + mysum(rest)  # Use 3.0 ext seq assign
+
+
+# Otro ejemplo con while más concreto
+
+L = [2,6,2,14,8]
+sum = 0
+while L:
+    sum += L[0]
+    L = L[1:]
+
+print(sum)
+
+# Better yet
+
+L = [23,7,10,10]
+sum = 0
+for x in L:
+    sum += x
+print(sum)
+
+"""
+Usando recursion para calcular la suma de los elementos de una lista anidada con n niveles
+donde ni while ni for funcionan
+"""
+def sumtree(L):
+    tot = 0
+    for x in L:                           # For each item at this level
+        if not isinstance(x, list):
+            tot += x                      # Add numbers directly
+        else:
+            tot += sumtree(x)             # Recur for sublists
+
+    return tot
+
+L = [1, [2, [3, 4], 5], 6, [7, 8]]
+
+print(sumtree(L))
+
+##################################################################
+# Anotaciones en funciones
+#################################################################
+"""
+Para realizar anotaciones en una función se puede hacer sobre los parámetros y sobre el
+return de la función. La forma de hacerlo para los parámetros es poner la anotación
+detras del nombre del parámetro seguido por dos punto y para el return luego de cerrar el paréntesis
+y antes de los dos punto se indica con una flecha ->
+Las anotaciones son devueltas como un diccionario
+"""
+def func(a:'anotacion_1', b:'rango de 1 a 10', c:float) -> int:
+    return a+b+c
+print(func(2,5,7))
+
+# Para ver las anotaciones
+func.__annotations__
+
+# Anotaciones con argumentos por default
+def func(a:'anotacion1'=3, b:int=5) -> int:
+    return a+b
+
+print(func())
+func.__annotations__
+
+
+#####################################################################
+# Function lambda
+####################################################################
+"""
+Sintaxis:
+lambda argument1, argument2,... argumentN :expression using arguments
+"""
+f = lambda a,b,c: a+b+c
+f(1,2,3)
+
+"""
+los argumentos en las funciones lambda trabajan igual que en las funciones definidas con
+def
+"""
+f = (lambda a = 'jose', b='el mas', c = 'duro': a+b+c)
+f()
+f('lolo','el mas','flojo')
