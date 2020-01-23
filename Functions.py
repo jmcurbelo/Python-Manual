@@ -391,3 +391,86 @@ def
 f = (lambda a = 'jose', b='el mas', c = 'duro': a+b+c)
 f()
 f('lolo','el mas','flojo')
+
+# Ejemplo
+
+ L = [lambda x: x**2,
+      lambda x: x**3,
+      lambda x: x**4]
+for f in L:
+    print(f(2))
+
+# Forma de implementar if/else dentro de lambda
+
+lower = lambda x,y: x if x<y else y
+
+lower('jose','alberto')
+
+# Emplear loops en funciones lambda
+import sys
+showall = lambda x: list(map(sys.stdout.write, x))
+
+showall(['lolo\n', 'polo\n', 'pepe\n'])
+
+# Otra forma
+showall = lambda x: [sys.stdout.write(line) for line in x]
+
+showall(('lolo\n', 'juan\n', 'jacinto\n'))
+
+# lambdas dentro de funciones def
+def action(x):
+    return(lambda y: x+y)
+suma = action(99)
+suma(10)  #Suma 10 al 99 con que se creo
+
+# lambdas dentro de lambdas (evitar cuando sea posible)
+action = (lambda x: (lambda y: x+y))
+suma = action(19)
+suma(1)
+
+
+# Utilidad de lambda en tkinter para crear aplicaciones
+import sys
+from tkinter import Button, mainloop # Tkinter in 2.6
+x = Button(
+    text = 'Press me',
+    command = (lambda: sys.stdout.write('Hello\n')))
+
+x.pack()
+mainloop()
+
+####################################################################################
+# La función Map()
+####################################################################################
+def incremento(x):
+    return x + 10
+print(list(map(incremento,[1,2,3])))
+
+# Map con lambdas
+print(list(map(lambda x: x + 100, [1,2,3])))
+
+"""
+Cuando map toma varios argumentos (listas) como entradas este mapea cada elemento de las listas
+como un parámetro diferente, ejemplo:
+"""
+pow(3, 4)    # Tres elevado a la cuatro
+
+print(list(map(pow, [1,2,3], [2,3,4]))) # devuelve 1 al cuadrado, 2 a la 3 y 3 a la 4
+
+##########################################################################
+# Funciones filter y reduce
+##########################################################################
+print(list(filter((lambda x: x>0), range(-5,5)))) # Filtra los valores mayores que cero
+
+from functools import reduce
+
+print(reduce((lambda x,y: x + y), [1,2,3,4])) # Retorma la suma de los elementos de la lista
+
+# El equivalente con una funcion sería
+def myreduce(function, sequence):
+    tally = sequence[0]
+    for next in sequence[1:]:
+        tally = function(tally, next)
+    return tally
+
+print(myreduce((lambda x, y: x + y), [1, 2, 3, 4, 5]))
