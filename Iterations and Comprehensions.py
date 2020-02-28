@@ -59,3 +59,35 @@ estos ejemplos son utilizados para leer archivos y eliminar el salto de línea a
 [M[i][i] for i in range(len(M))] #da la diagonal
 
 
+
+##############################################################
+# Summary of all the comprehension alternatives in 3.0
+##############################################################
+
+[x*x for x in range(10)]     # List comprehesion
+
+"""
+Esto contruye un generador que puede ser utilizado para generar objetos con la funcion 
+next(generador)
+"""
+(x*x for x in range(10))     # Generator expression: produces items. # Parens are often optional
+G = (x*x for x in range(10))
+next(G)
+
+{x * x for x in range(10)}   # Set comprehension, new in 3.0
+
+{x: x * x for x in range(10)} # Dictionary comprehension, new in 3.0
+
+##############################################################
+# Comprehending Set and Dictionary Comprehensions
+##############################################################
+
+{x*x for x in range(10)} # Set comprehesion
+
+set(x*x for x in range(10))  # Generator and type name
+
+{x:x**2 for x in range(10)}  # Dictionary Comprehesion
+
+dict((x,x**2) for x in range(10))   # Generator and type name
+
+
