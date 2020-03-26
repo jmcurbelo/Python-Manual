@@ -37,5 +37,9 @@ Hasta aquí este ejemplo muestra como hacer estos pasos:
 7. Ahora se guardarán las instancias en archivos en disco que podamos luego leer. Para
    ello crearemos otro script llamado makedb.py
 
+8. Para actualizar la base de datos crearemos otro script llamado updatedb.py. Como
+   la actualizacion ocurre luego de que se muestran los archivos en este caso, debemos
+   correr una segunda vez el script para ver la actualizacion de los campos
+
 """
 
